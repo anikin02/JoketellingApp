@@ -8,9 +8,50 @@
 import SwiftUI
 
 struct RandomJokeView: View {
+  
+  @ObservedObject var viewModel: RandomJokeViewModel = .init()
+  
   var body: some View {
     VStack {
-      Text("JOKE")
+      HStack{
+        Text("Random joke")
+          .font(.system(size: 32, weight: .black, design: .default))
+      }
+      
+      // Types here
+      
+      Spacer()
+      
+      RandomJokeItem(joke: viewModel.joke)
+      
+      Spacer()
+      
+      Button {
+        viewModel.setNewJoke()
+      } label: {
+        Text("New random joke")
+          .font(.system(size: 24, weight: .bold, design: .default))
+          .padding(12)
+          .frame(maxWidth: .infinity)
+          .background(.black)
+          .clipShape(.capsule)
+      }
+      
+      
     }
+    .padding(.horizontal)
+    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+  }
+}
+
+struct RandomJokeItem: View {
+  let joke: Joke
+  var body: some View {
+    VStack{
+      Text(joke.setup)
+      Text(joke.punchline)
+    }
+    .font(.system(size: 20, weight: .medium, design: .default))
+    .multilineTextAlignment(.center)
   }
 }

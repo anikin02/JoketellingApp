@@ -13,7 +13,10 @@ import SwiftUI
 
 struct ContentView: View {
   var body: some View {
-    RandomJokeView()
+    ZStack {
+      //Color.colorBG.ignoresSafeArea()
+      RandomJokeView()
+    }
   }
 }
 
