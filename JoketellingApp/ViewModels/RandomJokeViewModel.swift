@@ -15,6 +15,10 @@ class RandomJokeViewModel: ObservableObject {
   }
   
   func setNewJoke() {
-    joke = .init(setup: "Why did the programmer quit his job?", punchline: "Because he didn't get arrays.", type: "programming")
+    APIManager.shared.getRandomJoke(type: "programming") { response in
+      DispatchQueue.main.async {
+        self.joke = response.first ?? self.joke
+      }
+    }
   }
 }
