@@ -8,5 +8,12 @@
 struct Joke: Decodable {
   let setup: String
   let punchline: String
-  let type: String // enum in future
+  let type: JokeType
+}
+
+enum JokeType: String, Decodable {
+  case general = "general"
+  case dad = "dad"
+  case programming = "programming"
+  case knockKnock = "knock-knock"
 }

@@ -44,14 +44,3 @@ struct RandomJokeView: View {
   }
 }
 
-struct RandomJokeItem: View {
-  let joke: Joke
-  var body: some View {
-    VStack{
-      Text(joke.setup)
-      Text(joke.punchline)
-    }
-    .font(.system(size: 20, weight: .medium, design: .default))
-    .multilineTextAlignment(.center)
-  }
-}
